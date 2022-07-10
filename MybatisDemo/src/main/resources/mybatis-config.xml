@@ -8,13 +8,16 @@
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/study"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/study?useSSL=true"/>
                 <property name="username" value="root"/>
                 <property name="password" value="123456"/>
             </dataSource>
         </environment>
     </environments>
     <mappers>
-        <mapper resource="BrandMapper.xml"/>
+        <mapper resource="com.test.mapper/BrandMapper.xml"/>
+
+        <!--这句看似等价的扫描包写法会报错！！！在找原因中-->
+        <!--<package name="com.test.mapper"/>-->
     </mappers>
 </configuration>

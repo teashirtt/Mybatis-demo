@@ -1,4 +1,5 @@
-import com.test.Brand;
+import com.test.mapper.BrandMapper;
+import com.test.pojo.Brand;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -18,9 +19,10 @@ public class MybatisDemo {
 
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
-        List<Brand> brand = sqlSession.selectList("test.selectAll");
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+        List<Brand> brands = mapper.selectAll();
 
-        System.out.println(brand);
+        System.out.println(brands);
 
         sqlSession.close();
     }

@@ -24,9 +24,18 @@
     <select id="selectByCondition" resultMap="brandMap">
         select *
         from tb_user
-        where status = #{status}
-          and company_name like #{companyName}
-          and brand_name like #{brand}
+        where
+        <if test="status != null">
+            status = #{status}
+        </if>
+        <if test="companyName != null and companyName!=''">
+            and company_name like #{companyName}
+        </if>
+
+        <if test="brand != null and brand!=''">
+            and brand_name like #{brand}
+        </if>
+
     </select>
 
 </mapper>

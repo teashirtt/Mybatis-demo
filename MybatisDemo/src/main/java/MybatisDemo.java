@@ -23,7 +23,7 @@ public class MybatisDemo {
 //        List<Brand> brands = mapper.selectAll();
 //        Brand b = mapper.selectById(2);
 //        System.out.println(b);
-        List<Brand> brands = mapper.selectByCondition(1, "%华为%", "%为%");
+        List<Brand> brands = mapper.selectByCondition(1, "", "%为%");
         System.out.println(brands);
         sqlSession.close();
     }

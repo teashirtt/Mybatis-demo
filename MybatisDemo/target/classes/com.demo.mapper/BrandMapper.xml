@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.demo.mapper.BrandMapper">
+
+    <resultMap id="brandMap" type="com.demo.pojo.Brand">
+        <result column="brand_name" property="brand"/>
+        <result column="company_name" property="companyName"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="brandMap">
+        select *
+        from tb_user
+    </select>
+
+    <select id="selectById" resultMap="brandMap">
+        select *
+        from tb_user
+        where id = #{id}
+    </select>
+
+    <select id="selectByCondition" resultMap="brandMap">
+        select *
+        from tb_user
+        where status = #{status}
+          and company_name like #{companyName}
+          and brand_name like #{brand}
+    </select>
+
+</mapper>
+
+        <!--
+            数据库表的字段名称 和 实体类的属性名称不一样，则不能自动封装数据，解决方法：
+            * 起别名： 查询时使用 as 起别名 brand_name as brandName,也可使用sql片段标签封装别名，使其可以复用
+            * resultMap: 使用resultMap映射  定义resultMap标签，使用resultMap替换resultType属性  常用！！！
+                - 外标签   id： 唯一标识  type： 映射类型，支持别名
+                - 内标签   id： 完成主键的映射  result： 完成非主键的映射
+        -->

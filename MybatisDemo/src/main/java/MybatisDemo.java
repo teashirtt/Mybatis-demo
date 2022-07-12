@@ -1,5 +1,5 @@
-import com.test.mapper.BrandMapper;
-import com.test.pojo.Brand;
+import com.demo.mapper.BrandMapper;
+import com.demo.pojo.Brand;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -20,10 +20,11 @@ public class MybatisDemo {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
-        List<Brand> brands = mapper.selectAll();
-
+//        List<Brand> brands = mapper.selectAll();
+//        Brand b = mapper.selectById(2);
+//        System.out.println(b);
+        List<Brand> brands = mapper.selectByCondition(1, "%华为%", "%为%");
         System.out.println(brands);
-
         sqlSession.close();
     }
 }

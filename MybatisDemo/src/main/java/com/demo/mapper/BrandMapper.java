@@ -20,4 +20,15 @@ public interface BrandMapper {
     */
     List<Brand> selectByCondition(@Param("status") int status,@Param("companyName") String companyName
             ,@Param("brand") String  brand);
+
+    // 添加
+    void add(Brand brand);
+
+    // 修改
+    int update(Brand brand);
+
+    // 删除
+    void del(int id);
+
+    void delByIds(int[] ids);
 }

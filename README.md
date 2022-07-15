@@ -26,7 +26,7 @@ Mybatis-demo
 ```
 ```xml
     <!-- 极其的离谱，如果传入的数组里有单个数据不会有任何反应，但如果数组内有大于一个只会删除首个数据 -->
-    <!-- 比如向上文传入[2,4] 就会只删除第一个 -->
+    <!-- 比如像上文一样传入[2,4] 就会只删除id为1的数据 （如果没有就不删） 我直接？？？ -->
     <delete id="delByIds">
         delete from tb_user where id in
         <foreach collection="array" index="id" separator="," open="(" close=")">
